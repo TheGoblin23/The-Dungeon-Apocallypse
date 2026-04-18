@@ -1,0 +1,389 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+
+/* --------- VARIABLES --------- */
+:root {
+  --parchment: #c9a96e;
+  --parchment-dark: #8b6914;
+  --blood: #8b1a1a;
+  --blood-bright: #b22222;
+  --iron: #2a2a35;
+  --iron-light: #3a3a4a;
+  --iron-mid: #4a4a5a;
+  --gold: #d4af37;
+  --gold-dim: #9a7a1a;
+  --ember: #c0441a;
+  --smoke: #1a1a22;
+  --stone: #0d0d14;
+  --rune: #7a6ba0;
+  --hp-green: #2d7a2d;
+  --hp-green-bright: #3a9e3a;
+
+  --shadow-deep: 0 4px 20px rgba(0,0,0,0.7);
+  --text-glow: 0 0 12px rgba(212,175,55,0.3);
+}
+
+/* --------- BASE --------- */
+body {
+  margin: 0;
+  font-family: 'Crimson Text', Georgia, serif;
+  background-color: var(--stone);
+  background-image:
+    radial-gradient(ellipse at 10% 90%, rgba(139,26,26,0.1) 0%, transparent 45%),
+    radial-gradient(ellipse at 90% 10%, rgba(122,107,160,0.07) 0%, transparent 45%),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(255,255,255,0.004) 2px,
+      rgba(255,255,255,0.004) 4px
+    );
+  color: var(--parchment);
+  overflow-x: hidden;
+}
+
+/* --------- HEADER --------- */
+.top-bar {
+  padding: 10px 16px;
+  background: linear-gradient(180deg, #050508 0%, var(--smoke) 100%);
+  border-bottom: 1px solid var(--gold-dim);
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.top-bar::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+/* --------- CONTENEDOR --------- */
+.game-container {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 50px);
+  justify-content: space-between;
+}
+
+/* --------- ENEMIGO --------- */
+.enemy-area {
+  text-align: center;
+  padding: 16px 12px 10px;
+  background: linear-gradient(180deg, rgba(139,26,26,0.12) 0%, transparent 100%);
+  border-bottom: 1px solid rgba(139,26,26,0.3);
+  position: relative;
+}
+
+.enemy-area::before {
+  content: '☠';
+  position: absolute;
+  top: 8px; left: 16px;
+  font-size: 1rem;
+  color: var(--blood);
+  opacity: 0.5;
+}
+
+#enemy-name {
+  margin: 0 0 4px;
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #c04040;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 8px rgba(192,64,64,0.4);
+}
+
+.enemy-area p {
+  margin: 2px 0 8px;
+  font-size: 0.85rem;
+  color: #8a5050;
+  letter-spacing: 1px;
+}
+
+/* --------- CENTRO --------- */
+.center-area {
+  text-align: center;
+  padding: 12px;
+  background: linear-gradient(180deg, transparent, rgba(42,42,53,0.5), transparent);
+  border-top: 1px solid var(--iron-mid);
+  border-bottom: 1px solid var(--iron-mid);
+  position: relative;
+}
+
+.center-area::before,
+.center-area::after {
+  content: '';
+  position: absolute;
+  left: 50%; transform: translateX(-50%);
+  width: 200px; height: 1px;
+}
+
+.center-area::before {
+  top: 4px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+}
+
+.center-area::after {
+  bottom: 4px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+}
+
+.center-area p {
+  margin: 4px 0;
+  font-family: 'Crimson Text', serif;
+  font-size: 0.9rem;
+  color: #8a8090;
+  letter-spacing: 1px;
+}
+
+.center-area span {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+/* --------- JUGADOR --------- */
+.player-area {
+  text-align: center;
+  padding: 10px 12px 16px;
+  background: linear-gradient(0deg, rgba(45,122,45,0.1) 0%, transparent 100%);
+  border-top: 1px solid rgba(45,122,45,0.25);
+  position: relative;
+}
+
+.player-area::before {
+  content: '⚔';
+  position: absolute;
+  top: 8px; right: 16px;
+  font-size: 1rem;
+  color: var(--gold-dim);
+  opacity: 0.5;
+}
+
+#player-name {
+  margin: 0 0 4px;
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: var(--text-glow);
+}
+
+.player-area p {
+  margin: 2px 0 8px;
+  font-size: 0.85rem;
+  color: #6a8060;
+  letter-spacing: 1px;
+}
+
+/* --------- BARRA DE VIDA --------- */
+.hp-bar {
+  width: 75%;
+  height: 10px;
+  background: rgba(0,0,0,0.6);
+  border: 1px solid var(--iron-mid);
+  margin: 0 auto;
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);
+}
+
+.hp-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--hp-green) 0%, var(--hp-green-bright) 60%, #5aba5a 100%);
+  width: 100%;
+  transition: width 0.4s ease;
+  box-shadow: 0 0 6px rgba(58,158,58,0.4);
+}
+
+/* --------- BOTONES --------- */
+button {
+  padding: 9px 16px;
+  margin: 4px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: 'Crimson Text', serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.2s;
+  border: 1px solid var(--iron-mid);
+  background: var(--iron);
+  color: var(--parchment);
+}
+
+button:hover {
+  border-color: var(--gold-dim);
+}
+
+.top-bar button {
+  background: var(--iron);
+  border: 1px solid var(--iron-mid);
+  color: var(--parchment);
+  font-family: 'Cinzel', serif;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+.top-bar button:hover {
+  background: var(--iron-light);
+  border-color: var(--gold-dim);
+  color: var(--gold);
+}
+
+.dice-btn {
+  background: linear-gradient(180deg, #c07a10 0%, #8a5a08 100%);
+  border: 1px solid var(--gold-dim);
+  color: #f0d080;
+  box-shadow: 0 3px 10px rgba(192,122,16,0.3), inset 0 1px 0 rgba(255,220,100,0.2);
+}
+
+.dice-btn:hover {
+  background: linear-gradient(180deg, #d08a18 0%, #9a6a10 100%);
+  box-shadow: 0 4px 14px rgba(200,140,20,0.4);
+  transform: translateY(-1px);
+  border-color: var(--gold);
+}
+
+.end-btn {
+  background: linear-gradient(180deg, var(--blood-bright) 0%, var(--blood) 60%, #5a0f0f 100%);
+  border: 1px solid #c03030;
+  color: #f0c0c0;
+  box-shadow: 0 3px 10px rgba(139,26,26,0.35), inset 0 1px 0 rgba(255,180,180,0.15);
+}
+
+.end-btn:hover {
+  background: linear-gradient(180deg, #c83030 0%, #9a1a1a 60%, #6a0f0f 100%);
+  box-shadow: 0 4px 14px rgba(180,30,30,0.5);
+  transform: translateY(-1px);
+}
+
+.ability-btn {
+  background: linear-gradient(180deg, #6a3aad 0%, #4a2080 60%, #2a1050 100%);
+  border: 1px solid var(--rune);
+  color: #d0c0f0;
+  box-shadow: 0 3px 10px rgba(122,107,160,0.3), inset 0 1px 0 rgba(200,180,255,0.15);
+}
+
+.ability-btn:hover {
+  background: linear-gradient(180deg, #7a4ac0 0%, #5a28a0 60%, #3a1860 100%);
+  box-shadow: 0 4px 14px rgba(150,130,200,0.4);
+  transform: translateY(-1px);
+  border-color: var(--rune-bright);
+}
+
+/* --------- CARTAS --------- */
+.hand {
+  display: flex;
+  gap: 10px;
+  padding: 10px 14px;
+  overflow-x: auto;
+  background: linear-gradient(0deg, #050508 0%, var(--smoke) 100%);
+  border-top: 1px solid var(--gold-dim);
+  position: relative;
+}
+
+.hand::before {
+  content: '';
+  position: absolute;
+  top: -3px; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.hand::-webkit-scrollbar { height: 4px; }
+.hand::-webkit-scrollbar-track { background: var(--stone); }
+.hand::-webkit-scrollbar-thumb { background: var(--iron-mid); border-radius: 2px; }
+
+.card {
+  min-width: 120px;
+  background: linear-gradient(160deg, var(--iron) 0%, #1a1a26 100%);
+  border: 1px solid var(--iron-mid);
+  padding: 12px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Crimson Text', serif;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212,175,55,0.25), transparent);
+}
+
+.card:hover {
+  background: linear-gradient(160deg, var(--iron-light) 0%, var(--iron) 100%);
+  border-color: var(--gold-dim);
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.6), 0 0 12px rgba(212,175,55,0.1);
+}
+
+/* --------- RESULTADO --------- */
+.result {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.92);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(3px);
+}
+
+.hidden { display: none; }
+
+.result h1 {
+  font-family: 'Cinzel', serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 32px;
+  color: var(--gold);
+  text-shadow: var(--text-glow), 0 4px 16px rgba(0,0,0,0.8);
+  text-transform: uppercase;
+  letter-spacing: 4px;
+}
+
+.result-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.next-btn {
+  background: linear-gradient(180deg, var(--hp-green-bright) 0%, var(--hp-green) 60%, #1a5a1a 100%);
+  border: 1px solid #3a9e3a;
+  color: #c0f0c0;
+  font-size: 0.95rem;
+  padding: 12px 28px;
+  box-shadow: 0 4px 16px rgba(45,122,45,0.35);
+}
+
+.next-btn:hover {
+  background: linear-gradient(180deg, #4ab04a 0%, #2a8a2a 60%, #1a6a1a 100%);
+  box-shadow: 0 6px 20px rgba(60,160,60,0.5);
+  transform: translateY(-1px);
+}
+
+.menu-btn {
+  background: var(--iron);
+  border: 1px solid var(--iron-mid);
+  color: var(--parchment);
+  font-size: 0.95rem;
+  padding: 12px 28px;
+}
+
+.menu-btn:hover {
+  background: var(--iron-light);
+  border-color: var(--gold-dim);
+  color: var(--gold);
+}

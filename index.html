@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>The Dungeon Apocallypse</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="menu-header">
+    <h1 class="game-title">⚔️ The Dungeon Apocallypse</h1>
+    <button class="icon-btn" onclick="toggleMute()" id="mute-btn">🔊</button>
+  </div>
+
+  <!-- SELECCIÓN DE PERSONAJE -->
+  <section class="hero-section">
+    <h2>Elegí tu personaje</h2>
+    <div class="hero-cards">
+
+      <div class="hero-card" id="hero-guerrero" onclick="selectCharacter('guerrero')">
+        <div class="hero-icon">⚔️</div>
+        <h3>Guerrero</h3>
+        <ul>
+          <li>❤️ HP: 100</li>
+          <li>⚔️ Daño bonus: +1</li>
+          <li>⚡ Habilidad: Furia (+3 daño este turno)</li>
+        </ul>
+      </div>
+
+      <div class="hero-card" id="hero-mago" onclick="selectCharacter('mago')">
+        <div class="hero-icon">🧙</div>
+        <h3>Mago</h3>
+        <ul>
+          <li>❤️ HP: 85</li>
+          <li>✨ Energía bonus: +2</li>
+          <li>⚡ Habilidad: Canalizar (+3 energía este turno)</li>
+        </ul>
+      </div>
+
+      <div class="hero-card" id="hero-ladron" onclick="selectCharacter('ladron')">
+        <div class="hero-icon">🗡️</div>
+        <h3>Ladrón</h3>
+        <ul>
+          <li>❤️ HP: 90</li>
+          <li>🛡️ Esquiva: 1 de daño</li>
+          <li>⚡ Habilidad: Doble Dado (tira dos veces, elige el mejor)</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BOTONES PRINCIPALES -->
+  <section class="menu-buttons">
+    <button class="start-btn" onclick="startGame()">▶️ Empezar Partida</button>
+    <div class="secondary-buttons">
+      <button class="menu-btn" onclick="openModal('modal-lore')">📖 Historia</button>
+      <button class="menu-btn" onclick="openModal('modal-rules')">📜 Reglas</button>
+      <button class="menu-btn" onclick="openModal('modal-shop')">🏪 Tienda</button>
+    </div>
+  </section>
+
+  <!-- VERSION -->
+  <footer class="menu-footer">v0.1 — Early Access</footer>
+
+  <!-- MODAL: HISTORIA -->
+  <div class="modal hidden" id="modal-lore">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal('modal-lore')">✕</button>
+      <h2>📖 Historia</h2>
+      <p>En un mundo donde los dioses juegan con dados y las cartas dictan el destino, un héroe solitario desafía las sombras que consumen las tierras del norte.</p>
+      <p>Cada batalla es un lanzamiento. Cada carta, una decisión. El camino hacia la redención está pavimentado con huesos de enemigos caídos.</p>
+      <p><em>¿Tenés el valor de enfrentarte al caos?</em></p>
+    </div>
+  </div>
+
+  <!-- MODAL: REGLAS -->
+  <div class="modal hidden" id="modal-rules">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal('modal-rules')">✕</button>
+      <h2>📜 Reglas</h2>
+      <ul>
+        <li>🎲 Tirá los dados al inicio de tu turno para ganar energía.</li>
+        <li>⚡ Usá tu habilidad especial una vez por turno.</li>
+        <li>🃏 Jugá cartas gastando energía para atacar o curarte.</li>
+        <li>🔚 Terminá el turno para que el enemigo ataque.</li>
+        <li>💀 Si tu HP llega a 0, perdés. Si el enemigo llega a 0, ganás.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- MODAL: TIENDA -->
+  <div class="modal hidden" id="modal-shop">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal('modal-shop')">✕</button>
+      <h2>🏪 Tienda</h2>
+      <p class="shop-soon">La tienda está en construcción. Próximamente podrás comprar cartas, mejoras y cosméticos.</p>
+      <div class="shop-items">
+        <div class="shop-item locked">
+          <span>🗡️ Espada del Caos</span>
+          <span class="lock">🔒 Próximamente</span>
+        </div>
+        <div class="shop-item locked">
+          <span>🛡️ Escudo de Hierro</span>
+          <span class="lock">🔒 Próximamente</span>
+        </div>
+        <div class="shop-item locked">
+          <span>🧪 Poción Mayor</span>
+          <span class="lock">🔒 Próximamente</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/menu.js"></script>
+</body>
+</html>
