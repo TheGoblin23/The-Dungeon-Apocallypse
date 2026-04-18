@@ -64,6 +64,7 @@ body {
   display: flex;
   flex-direction: column;
   height: calc(60vh - 50px);
+  justify-content: center;
 }
 
 /* --------- ENEMIGO --------- */
