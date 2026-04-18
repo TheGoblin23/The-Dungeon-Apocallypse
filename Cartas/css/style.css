@@ -1,0 +1,61 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #111;
+  color: white;
+}
+
+.game {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: space-between;
+}
+
+.enemy, .player {
+  text-align: center;
+  padding: 10px;
+  background: #222;
+}
+
+.center {
+  text-align: center;
+}
+
+.hand {
+  display: flex;
+  overflow-x: auto;
+  padding: 10px;
+  gap: 10px;
+  background: #000;
+}
+
+.card {
+  min-width: 120px;
+  background: #333;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.card:hover {
+  background: #555;
+}
+
+.screen {
+  display: none;
+  text-align: center;
+  padding-top: 50px;
+}
+
+.screen.active {
+  display: block;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}

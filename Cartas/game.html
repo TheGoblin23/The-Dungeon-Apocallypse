@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Juego</title>
+  <link rel="stylesheet" href="css/game.css">
+</head>
+<body>
+
+<button onclick="goToMenu()">🏠 Menú</button>
+
+<div class="enemy">
+  <h2>Enemigo</h2>
+  <p>HP: <span id="enemy-hp">20</span></p>
+</div>
+
+<div class="center">
+  <button onclick="rollDice()">🎲 Tirar Dados</button>
+  <p>Energía: <span id="energy">0</span></p>
+  <p>Dados: <span id="dice-result">-</span></p>
+  <button onclick="endTurn()">Terminar Turno</button>
+</div>
+
+<div class="player">
+  <h2 id="player-name">Jugador</h2>
+  <p>HP: <span id="player-hp">20</span></p>
+</div>
+
+<div class="hand" id="hand"></div>
+
+<div id="result" style="display:none;">
+  <h1 id="result-text"></h1>
+  <button onclick="restartGame()">Reintentar</button>
+</div>
+
+<script type="module" src="js/game.js"></script>
+</body>
+</html>
