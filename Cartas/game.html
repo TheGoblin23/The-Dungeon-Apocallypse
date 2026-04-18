@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Juego</title>
+  <link rel="stylesheet" href="css/game.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="top-bar">
+    <button onclick="goToMenu()">🏠 Menú</button>
+  </div>
+
+  <div class="game-container">
+
+    <!-- ENEMIGO -->
+    <div class="enemy-area">
+      <h2 id="enemy-name">Enemigo</h2>
+      <p>HP: <span id="enemy-hp">-</span></p>
+      <div class="hp-bar">
+        <div class="hp-fill" id="enemy-hp-bar"></div>
+      </div>
+    </div>
+
+    <!-- CENTRO -->
+    <div class="center-area">
+      <button class="dice-btn" onclick="rollDice()">🎲 Tirar Dados</button>
+      <button class="ability-btn" onclick="activateAbility()">⚡ Habilidad</button>
+      <p>Energía: <span id="energy">0</span></p>
+      <p>Dados: <span id="dice-result">-</span></p>
+      <button class="end-btn" onclick="endTurn()">Terminar Turno</button>
+    </div>
+
+    <!-- JUGADOR -->
+    <div class="player-area">
+      <h2 id="player-name">Jugador</h2>
+      <p>HP: <span id="player-hp">-</span></p>
+      <div class="hp-bar">
+        <div class="hp-fill" id="player-hp-bar"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MANO DE CARTAS -->
+  <div class="hand" id="hand"></div>
+
+  <!-- PANTALLA DE RESULTADO -->
+  <div id="result-screen" class="result hidden"></div>
+
+  <script type="module" src="js/game.js"></script>
+</body>
+</html>
