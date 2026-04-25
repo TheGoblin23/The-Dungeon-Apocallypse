@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Dice Game - Batalla</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/game.css">
+    <meta name="theme-color" content="#0a0a0f">
+</head>
+<body>
+    <div id="game-container" class="fade-in">
+        
+        <div class="game-header">
+            <div class="currency-display">
+                <span>💎</span>
+                <span id="fragmentos-display">0</span>
+            </div>
+            <button onclick="window.irAlMenu()" style="font-size: 0.9rem; padding: 5px 10px;">Huir</button>
+        </div>
+
+        <div class="battle-arena">
+            <!-- JUGADOR -->
+            <div class="entity" id="jugador-entidad">
+                <div class="entity-icon" id="jugador-icono">⚔️</div>
+                <div class="entity-name" id="jugador-nombre">Guerrero</div>
+                <div class="hp-container">
+                    <div class="hp-bar" id="barra-hp-jugador" style="width: 100%;"></div>
+                    <div class="hp-text" id="texto-hp-jugador">100/100</div>
+                </div>
+            </div>
+
+            <!-- CONTROLES CENTRALES -->
+            <div class="center-controls">
+                <div class="energia-display">
+                    ⚡ <span id="energia-valor">0</span>
+                </div>
+                
+                <div class="dados-container" id="resultado-dados">
+                    <div class="dado">?</div>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="btn-tirar-dados" onclick="window.tirarDados()">Tirar Dados</button>
+                    <button id="btn-habilidad" onclick="window.activarHabilidad()" class="btn-habilidad">Furia</button>
+                    <button id="btn-terminar" onclick="window.terminarTurno()">Terminar Turno</button>
+                </div>
+
+                <div class="powerups-bar" id="barra-powerups">
+                    <!-- Botones de powerups dinámicos -->
+                </div>
+            </div>
+
+            <!-- ENEMIGO -->
+            <div class="entity" id="enemigo-entidad">
+                <div class="entity-icon" id="enemigo-icono">👹</div>
+                <div class="entity-name" id="enemigo-nombre">Goblin</div>
+                <div class="hp-container">
+                    <div class="hp-bar" id="barra-hp-enemigo" style="width: 100%;"></div>
+                    <div class="hp-text" id="texto-hp-enemigo">100/100</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MANO DE CARTAS -->
+        <div class="hand-container">
+            <div class="cards-wrapper" id="mano-cartas">
+                <!-- Cartas dinámicas -->
+            </div>
+        </div>
+
+        <!-- RESULTADO (Oculto por defecto) -->
+        <div id="pantalla-resultado" class="modal-overlay">
+            <div class="modal-content">
+                <h2 id="resultado-titulo">¡Victoria!</h2>
+                <div class="resultado-loot" id="resultado-loot-container">
+                    <h3>Botín Obtenido</h3>
+                    <div class="currency-display" style="justify-content: center;">
+                        <span>💎</span> <span id="loot-fragmentos">+15</span>
+                    </div>
+                    <div class="loot-grid" id="loot-materiales">
+                        <!-- Materiales -->
+                    </div>
+                </div>
+                <button onclick="window.siguienteNivel()" class="btn-start" id="btn-siguiente-nivel">Siguiente Nivel</button>
+                <button onclick="window.irAlMenu()" style="margin-top: 10px;">Volver al Menú</button>
+            </div>
+        </div>
+
+        <!-- LOG -->
+        <div id="game-log" class="log-container">
+            Comienza la batalla...
+        </div>
+    </div>
+
+    <script type="module" src="js/game.js"></script>
+</body>
+</html>

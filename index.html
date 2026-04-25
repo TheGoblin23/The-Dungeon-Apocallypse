@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Dungeon Adventure</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+    <meta name="theme-color" content="#0a0a0f">
+</head>
+
+<body>
+    <header>
+        <button id="btn-mute" class="btn-icon">🔊</button>
+        <h1 class="header-title">The Dungeon Adventure</h1>
+        <div class="currency-display">
+            <span>💎</span>
+            <span id="fragmentos-display">0</span>
+        </div>
+    </header>
+
+    <main class="menu-main fade-in">
+        <h2>Selecciona tu Héroe</h2>
+
+        <div class="hero-selection">
+            <div class="hero-card selected" data-hero="guerrero">
+                <img src="assets/warrior.png" alt="Guerrero" class="hero-image">
+                <h3>Guerrero</h3>
+            </div>
+
+            <div class="hero-card" data-hero="mago">
+                <img src="assets/wizard.png" alt="Mago" class="hero-image">
+                <h3>Mago</h3>
+            </div>
+
+            <div class="hero-card" data-hero="ladron">
+                <img src="assets/rogue.png" alt="Ladrón" class="hero-image">
+                <h3>Ladrón</h3>
+            </div>
+        </div>
+
+        <div class="main-actions">
+            <button id="btn-empezar" class="btn-start">⚔️ Empezar Partida</button>
+            <div class="secondary-actions">
+                <button id="btn-historia">📖 Historia</button>
+                <button id="btn-reglas">📜 Reglas</button>
+                <button id="btn-tienda">🏪 Tienda</button>
+                <button id="btn-forja">⚗️ Forja</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        v0.2 — Early Access
+    </footer>
+
+    <!-- Modals -->
+    <div id="modal-hero-info" class="modal-overlay">
+        <div class="modal-content hero-info-content">
+            <button class="close-modal">&times;</button>
+            <h2 id="hero-info-title">Nombre del Héroe</h2>
+            <img id="hero-info-image" src="" alt="Hero Image" class="hero-info-image">
+            <div class="hero-info-details">
+                <p id="hero-info-lore" style="font-style: italic; color: var(--texto-apagado); margin-bottom: 15px; text-align: center;"></p>
+                <div id="hero-info-stats" class="hero-stats-box">
+                    <!-- stats here -->
+                </div>
+            </div>
+            <button class="btn-confirm-hero" id="btn-confirm-hero" style="width: 100%;">Elegir Héroe</button>
+        </div>
+    </div>
+
+    <div id="modal-historia" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <h2>La Mazmorra Oscura</h2>
+            <p>Has descendido a las profundidades de la mazmorra donde la luz del sol nunca llega. Monstruos y
+                abominaciones acechan en la oscuridad, resguardando Fragmentos de Alma de aventureros caídos.</p>
+            <p>Usa tus dados para canalizar energía y juega tus cartas sabiamente para sobrevivir. La muerte es solo
+                otro comienzo.</p>
+        </div>
+    </div>
+
+    <div id="modal-reglas" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <h2>Reglas de Combate</h2>
+            <ul style="padding-left: 20px; line-height: 1.6;">
+                <li><strong>Turnos:</strong> El combate es por turnos. Tú atacas primero.</li>
+                <li><strong>Energía:</strong> Al inicio de tu turno, tiras un dado para obtener energía (⚡).</li>
+                <li><strong>Cartas:</strong> Usa energía para jugar cartas de tu mano. Cada carta tiene un costo y un
+                    efecto (ataque o curación).</li>
+                <li><strong>Habilidad:</strong> Cada héroe tiene una habilidad única que puede usar una vez por turno
+                    gratis.</li>
+                <li><strong>Enemigo:</strong> En su turno, el enemigo ataca con un daño aleatorio dentro de su rango.
+                </li>
+                <li><strong>Victoria:</strong> Reduce la salud del enemigo a 0 para ganar Fragmentos y Materiales.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="modal-tienda" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <h2>Tienda del Mercader</h2>
+            <p style="text-align: center; color: var(--texto-apagado);">"Fragmentos por favores, aventurero."</p>
+
+            <h3>Power-ups (Consumibles)</h3>
+            <div id="tienda-powerups"></div>
+
+            <h3 style="margin-top: 15px;">Cosméticos</h3>
+            <div id="tienda-cosmeticos"></div>
+
+            <h3 style="margin-top: 15px;">Tesoros Reales</h3>
+            <div id="tienda-real"></div>
+        </div>
+    </div>
+
+    <div id="modal-forja" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <h2>Forja Oscura</h2>
+            <div style="display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 10px; flex-wrap: wrap;"
+                id="inventario-materiales">
+                <!-- Materiales aquí -->
+            </div>
+            <p style="color: var(--texto-apagado); font-size: 0.9rem; text-align: center;">Mejora tus atributos base
+                para futuras expediciones.</p>
+            <div id="lista-mejoras"></div>
+        </div>
+    </div>
+
+    <script type="module" src="menu.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js');
+        }
+    </script>
+</body>
+
+</html>
